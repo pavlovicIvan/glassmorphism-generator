@@ -1,6 +1,17 @@
+// React
 import React from "react";
+
+// Styling
 import "./App.css";
 
-const App = () => <div>Glassmorphism</div>;
+// Custom compnents
+import Header from "./layout/Header";
+import Generator from "./components/Generator";
 
+const App = () => (
+  <div className="containerCenter">
+    <Header />
+    <Generator />
+  </div>
+);
 export default App;
