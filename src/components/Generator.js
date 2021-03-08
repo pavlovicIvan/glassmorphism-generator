@@ -45,14 +45,14 @@ const Generator = () => {
         />
       </div>
       <div className="settings">
-        <div>
+        <div className="containerMainRow">
           <p className="label">Color</p>
           <input
             type="color"
             value={bgColor}
             onChange={(e) => setBgColor(e.target.value)}
           />
-          <p className="label">Border?</p>
+          <p className="label borderLabel">Border?</p>
           <input
             type="checkbox"
             defaultChecked={showBorder}
@@ -61,30 +61,46 @@ const Generator = () => {
             }}
           />
         </div>
-        <p className="label">Opacity</p>
-        <input
-          type="range"
-          value={bgOpacity}
-          onChange={(e) => {
-            setBgOpacity(e.target.value);
-          }}
-          min="0"
-          max="1"
-          step="0.1"
-        />
-        <p className="label">Blur</p>
-        <input
-          type="range"
-          value={blur}
-          onChange={(e) => {
-            setBlur(e.target.value);
-          }}
-          min="0"
-          max="50"
-          step="1"
-        />
+        <div className="containerMainRow">
+          <p className="label">Opacity</p>
+          <input
+            type="range"
+            value={bgOpacity}
+            onChange={(e) => {
+              setBgOpacity(e.target.value);
+            }}
+            min="0"
+            max="1"
+            step="0.1"
+          />
+        </div>
+        <div className="containerMainRow">
+          <p className="label">Blur</p>
+          <input
+            type="range"
+            value={blur}
+            onChange={(e) => {
+              setBlur(e.target.value);
+            }}
+            min="0"
+            max="50"
+            step="1"
+          />
+        </div>
         <p className="label">CSS</p>
-        <div>{css}</div>
+        <div className="cssDisplay">
+          {css.split(/(?<=;)/).map((line) => (
+            <div key={line}>{line}</div>
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            navigator.clipboard.writeText(css);
+          }}
+        >
+          COPY
+        </button>
       </div>
     </>
   );
