@@ -10,6 +10,7 @@ const Generator = () => {
   const [blur, setBlur] = useState("30");
   const [showBorder, setShowBorder] = useState(true);
   const [css, setCss] = useState("");
+  const [buttonLabel, setButtonLabel] = useState("COPY");
 
   function hexToRgb(hex) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -29,6 +30,7 @@ const Generator = () => {
         showBorder ? `border: 1px solid rgba(255, 255, 255, 0.2);` : ""
       }`
     );
+    setButtonLabel("COPY");
   }, [bgColor, bgOpacity, blur, showBorder]);
 
   return (
@@ -96,10 +98,11 @@ const Generator = () => {
         <button
           type="button"
           onClick={() => {
+            setButtonLabel("COPIED");
             navigator.clipboard.writeText(css);
           }}
         >
-          COPY
+          {buttonLabel}
         </button>
       </div>
     </>

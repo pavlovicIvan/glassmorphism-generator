@@ -12,7 +12,7 @@ const Header = () => (
   <div className="containerMainCenter">
     <div>
       <a
-        href="https://github.com/pavlovicIvan/react-qr-maker-app"
+        href="https://github.com/pavlovicIvan/glassmorphism-generator"
         target="_blank"
         rel="noreferrer"
       >
